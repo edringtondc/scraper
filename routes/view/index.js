@@ -5,7 +5,9 @@ router.get('/', function(req, res){
     db.Article
     .find({saved: false})
     .then(function(articles){
+        console.log(articles)
         res.render("articles", {articles});
+
     });
 });
 
