@@ -40,7 +40,8 @@ module.exports = {
     },
     findAll: function (req, res) {
         db.Article.find().then(function (articles) {
-            res.json(articles)
+            console.log(articles)
+            res.render("articles",{articles:articles})
         })
 
     },

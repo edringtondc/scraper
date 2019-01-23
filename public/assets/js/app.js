@@ -1,6 +1,5 @@
 //save article button
 
-
 //delete article button
 
 //edit note/add note button
@@ -14,5 +13,9 @@
 //clear button
 
 
+$.getJSON("/", function(data) {
+   
+  
+  });
 
 
