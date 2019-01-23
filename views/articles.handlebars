@@ -1,0 +1,13 @@
+<h3>Unsaved Articles: <span><a href="/saved">View Saved Articles</a> | <a href="/api/articles/all">Articles</a></span></h3>
+<ul class="unsaved">
+    {{#each articles}}
+    <li data-article-id={{_id}}>
+        <div><a href={{link}} target"_blank">
+            {{title}}
+        </a></div>
+        <button class="saveArticle">Save</button>
+
+        <button class="deleteArticle">Delete</button>
+    </li>
+    {{/each}}
+</ul>
