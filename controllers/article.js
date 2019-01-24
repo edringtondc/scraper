@@ -23,6 +23,7 @@ module.exports = {
 
                 var title = $(element).children().text();
                 var link = $(element).find("a").attr("href");
+                
 
                 const article = {}
 
@@ -33,6 +34,7 @@ module.exports = {
                 console.log(article);
             });
             
+            
 
         });
         res.send("scraped")
@@ -41,6 +43,8 @@ module.exports = {
     findAll: function (req, res) {
         db.Article.find().then(function (articles) {
             console.log(articles)
+
+            // res.json(articles)
             res.render("articles",{articles:articles})
         })
 

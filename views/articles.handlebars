@@ -1,17 +1,26 @@
-<h3>Unsaved Articles: <span><a href="/saved">View Saved Articles</a> | <a href="/api/articles/all">Articles</a></span></h3>
-<ul class="unsaved">
-    <h5> Scrapy scrapey</h5>
-    {{#each articles}}
-    
-    <li data-article-id={{_id}}>
-        <div class="card">
-        <div ><a href={{link}} target="_blank">
-            {{title}}
-        </a></div>
-        <button class="saveArticle">Save</button>
+<div class="container">
+    <h5>Unsaved Articles:
+        <span>
+            <a href="/saved">View Saved Articles</a>
+            | <a href="/api/articles/all">Articles</a>
+            | <a href="/api/articles/scrape">Scrape</a>
+        </span></h5>
 
-        <button class="deleteArticle">Delete</button>
-        </div>
-    </li>
-    {{/each}}
-</ul>
+    <ul class="unsaved">
+        {{!-- <h5> Scrapy scrapey</h5> --}}
+        {{#each articles}}
+
+        <li data-article-id={{_id}}>
+            <div class="card">
+                <div><a href={{link}} target="_blank">
+                        {{title}}
+                    </a></div>
+                <button class="saveArticle">Save</button>
+
+                <button class="deleteArticle">Delete</button>
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+
+</div>

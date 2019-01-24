@@ -12,10 +12,28 @@
 
 //clear button
 
+$( document ).ready(function() {
+    
 
-$.getJSON("/", function(data) {
-   
-  
-  });
+//save button
+console.log("loaded")
 
+$(".saveArticle").on("click", function(event){
+    event.preventDefault();
 
+    console.log("save clicked!")
+
+    const id = $(this).parents("li").data("article-id")
+    console.log(id)
+
+    $.ajax({
+        method: "PUT",
+        url: `/api/articles/${id}`,
+        data: { saved: true}
+    }).then(function(res){
+
+        window.location.assign("/saved");
+    });
+});
+
+});

@@ -1,12 +1,37 @@
-<h1>saved Articles: <span><a href="/saved">View Saved Articles</a> | <a href="/api/articles/all">Articles</a></span></h1>
+<div class="container">
+<h3>saved Articles: <span><a href="/saved">View Saved Articles</a> | <a href="/api/articles/all">Articles</a></span></h3>
+
+
 <ul class="saved">
+    <h5> Scrapy scrapey</h5>
+
+    {{#each articles}}
+    
+    <li data-article-id={{_id}}>
+        <div class="card">
+        <div ><a href={{link}} target="_blank">
+            {{title}}
+        </a></div>
+        <button class="saveArticle">Save</button>
+
+        <button class="deleteArticle">Delete</button>
+        </div>
+    </li>
+    {{/each}}
+</ul>
+
+</div>
+
+
+{{!-- <ul class="saved">
+
     {{#each articles}}
     <li data-article-id={{_id}}>
-        <div><a href={{link}} target"_blank">
+        <div><a href={{link}} target="_blank">
                 {{title}}
             </a></div>
         {{#if note}}
-        <div class="note" data-note-id={{note._id}}>Notes: {{note.text</div>
+        <div class="note" data-note-id={{note._id}}>Notes: {{note.text}}</div>
         <button class="editNote">Edit Note</button>
         <form class="editForm">
             <input class="text" placeholder="Edit a note" />
@@ -22,4 +47,4 @@
         {{#/unless}}
     </li>
     {{/each}}
-</ul>  
+</ul>   --}}
