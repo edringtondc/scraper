@@ -6,7 +6,7 @@ const articleController = require("../../controllers/article")
 router.get("/clear", articleController.clear)
 // /api/articles/scrape
 router.get("/scrape", articleController.scrape)
-// /api/articles/all
+// /api/articles/all - gives json api
 router.get("/all", articleController.findAll)
 // /api/articles/id
 router.get("/:id", articleController.findOne)
@@ -14,6 +14,7 @@ router.get("/:id", articleController.findOne)
 router.put("/:id", articleController.update)
 // /api/articles/id
 router.delete("/:id", articleController.deleteOne)
+router.get("/", articleController.findAll)
 
 
 module.exports = router

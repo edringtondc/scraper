@@ -4,7 +4,9 @@ var articleRoutes = require("./articles")
 
 
 router.use("/articles", articleRoutes)
+
 router.use("/notes", noteRoutes);
+
 
 
 

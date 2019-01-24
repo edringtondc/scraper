@@ -1,15 +1,25 @@
 var router = require("express").Router();
 var db = require("../../models");
+var logger = require("morgan")
+
 
 router.get('/', function(req, res){
-    db.Article
-    .find({saved: false})
-    .then(function(articles){
-        console.log(articles)
-       
-        res.render("articles", {articles});
+    console.log( "/ route ", res)
 
-    });
+    // res.render("articles",{articles:articles})
+
+
+    res.render("./articles")
+    
+    // db.Article
+    // .find({saved: false})
+    // .then(function(articles){
+
+    //     console.log(articles)
+    //     res.render("articles",{articles:articles})
+     
+
+    // });
 });
 
 router.get('/saved', function(req, res){

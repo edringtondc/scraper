@@ -14,6 +14,7 @@ module.exports = {
             })
     },
     scrape: function (req, res) {
+
         axios.get("https://www.wholesomeyum.com/").then(function (response) {
 
         
@@ -25,13 +26,24 @@ module.exports = {
                 var link = $(element).find("a").attr("href");
                 
 
-                const article = {}
+                const result = {}
 
-                article.title = title
-                article.link = link
+                result.title = title
+                result.link = link
 
-                db.Article.create(article)
-                console.log(article);
+                // db.Article.create(article)
+
+                db.Article.create(result)
+                .then(function(dbArticle) {
+                  // View the added result in the console
+                  console.log(dbArticle);
+                })
+                .catch(function(err) {
+                  // If an error occurred, log it
+                  console.log(err);
+                });
+
+                console.log("this is an article ", result);
             });
             
             
@@ -44,8 +56,8 @@ module.exports = {
         db.Article.find().then(function (articles) {
             console.log(articles)
 
-            // res.json(articles)
-            res.render("articles",{articles:articles})
+            res.json(articles)
+            // res.render("articles",{articles:articles})
         })
 
     },
