@@ -2,7 +2,7 @@
 var express = require("express");
 var exphbs = require("express-handlebars");
 
-var PORT = 8080
+var PORT = process.env.PORT || 3000
 var mongoose = require("mongoose")
 var routes = require("./routes");
 
