@@ -1,31 +1,51 @@
+<nav> <span>
+        <a href="/saved">Saved Articles</a>
+        | <a href="/">Articles</a>
+        | <a href="/api/articles/scrape">Scrape</a>
+    </span></nav>
 <div class="container">
-<h3>saved Articles: <span><a href="/saved">View Saved Articles</a> | <a href="/api/articles/all">Articles</a></span></h3>
+
+    <ul class="saved">
+
+        {{#each articles}}
+
+        <li data-article-id={{_id}}>
+            <div class="card">
+                <div><a href={{link}} target="_blank">
+                        {{title}}
+                    </a></div>
+                <a class="waves-effect waves-light btn saveArticle">Save</a>
+                {{!-- <button class="saveArticle">Save</button> --}}
+                <a class="waves-effect waves-light btn deleteArticle">Delete</a>
+
+                {{!-- <button class="deleteArticle">Delete</button> --}}
 
 
-<ul class="saved">
-    <h5> Scrapy scrapey</h5>
+                <form class="note">
+                    <input data-article-id={{_id}} class="noteBody" type="text" name="noteInput" placeholder="Note"></input>
 
-    {{#each articles}}
-    
-    <li data-article-id={{_id}}>
-        <div class="card">
-        <div ><a href={{link}} target="_blank">
-            {{title}}
-        </a></div>
-        <button class="saveArticle">Save</button>
+                    <button type="submit">Submit</button>
+                </form>
+           
 
-        <button class="deleteArticle">Delete</button>
-        </div>
-    </li>
-    {{/each}}
-</ul>
+        {{#if note}}
+            <div class="noteDiv">
+                {{note.noteBody}}
+            </div>
+            {{/if}}
+            </div>
+        </li>
+
+ 
+        {{/each}}
+    </ul>
 
 </div>
 
 
 {{!-- <ul class="saved">
 
-    {{#each articles}}
+    {{#each note}}
     <li data-article-id={{_id}}>
         <div><a href={{link}} target="_blank">
                 {{title}}
@@ -47,4 +67,4 @@
         {{#/unless}}
     </li>
     {{/each}}
-</ul>   --}}
+</ul> --}}

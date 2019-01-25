@@ -30,8 +30,17 @@ var db = require("../models")
             })
         },
         create: function(req, res){
-            db.Note.create(req.body, function(err){
+            db.Note.create(req.body, function(err, data){
                 if (err) throw err
+                console.log(req.body)
+                console.log(data)
+                //get all saved, if there is an associated note, we want that too
+                db.Article.findOneAndUpdate({_id: req.body.articleID}, {note: data._id})
+                .then(function(data){
+                    console.log(data)
+                    res.json({})
+                })
+                
             })
         },
         update: function(req, res){

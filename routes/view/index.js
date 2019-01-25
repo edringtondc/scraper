@@ -9,25 +9,28 @@ router.get('/', function(req, res){
     // res.render("articles",{articles:articles})
 
 
-    res.render("./articles")
+    // res.render("./articles")
+    // res.render("articles",{articles:articles})
     
-    // db.Article
-    // .find({saved: false})
-    // .then(function(articles){
+    db.Article
+    .find({})
+    .then(function(articles){
 
-    //     console.log(articles)
-    //     res.render("articles",{articles:articles})
+        console.log(articles)
+        res.render("articles",{articles: articles})
      
 
-    // });
+    });
 });
 
 router.get('/saved', function(req, res){
 
     db.Article
     .find({saved: true})
-    .then(function(note){
-        res.render("layouts/saved", {note});
+    .populate("note")
+    .then(function(articles){
+        console.log(articles)
+        res.render("saved", {articles: articles});
     });
 });
 

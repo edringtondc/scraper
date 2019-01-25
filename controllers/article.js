@@ -15,22 +15,24 @@ module.exports = {
     },
     scrape: function (req, res) {
 
-        axios.get("https://www.wholesomeyum.com/").then(function (response) {
+        var url = "https://www.huffingtonpost.com"
+        axios.get(url + "/section/us-news").then(function (response) {
 
         
             var $ = cheerio.load(response.data);
 
-            $("h2.entry-title").each(function (i, element) {
+            $("div.card__headlines").each(function (i, element) {
 
                 var title = $(element).children().text();
                 var link = $(element).find("a").attr("href");
+                var image = $(element).children().find("img").attr("src");
                 
 
                 const result = {}
 
                 result.title = title
-                result.link = link
-
+                result.link = url + link
+                result.image = image
                 // db.Article.create(article)
 
                 db.Article.create(result)
@@ -45,8 +47,6 @@ module.exports = {
 
                 console.log("this is an article ", result);
             });
-            
-            
 
         });
         res.send("scraped")
